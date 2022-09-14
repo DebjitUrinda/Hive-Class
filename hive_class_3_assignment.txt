@@ -24,8 +24,19 @@ b. Find a product for which maximum orders were placed:
   from sales_order_data_orc group by productline 
   order by total_ordered desc) tb limit 1;
   
-c. Calculate the total sales for each quarter
-d. In which quarter sales was minimum
-e. In which country sales was maximum and in which country sales was minimum
+c. Calculate the total sales for each quarter:
+  select sum(sales) as total_sales,QTR_ID as sales_quarter
+  from sales_order_data_orc
+  group by QTR_ID;
+
+d. In which quarter sales was minimum:
+  select QTR_ID as sales_quarter 
+  from (select sum(sales) as total_sales, QTR_ID 
+  from sales_order_data_orc group by QTR_ID 
+  order by total_sales) tb limit 1;
+  
+e. In which country sales was maximum and in which country sales was minimum:
+  
+
 f. Calculate quartelry sales for each city
 h. Find a month for each year in which maximum number of quantities were sold
