@@ -13,8 +13,17 @@
 
 Perform below menioned queries on "sales_order_orc" table :
 
-a. Calculatye total sales per year
-b. Find a product for which maximum orders were placed
+a. Calculatye total sales per year:
+  select sum(sales) as total_sales,year_id as year
+  from sales_order_data_orc
+  group by year_id;
+  
+b. Find a product for which maximum orders were placed:
+  select PRODUCTLINE 
+  from (select sum(QUANTITYORDERED) as total_ordered, productline 
+  from sales_order_data_orc group by productline 
+  order by total_ordered desc) tb limit 1;
+  
 c. Calculate the total sales for each quarter
 d. In which quarter sales was minimum
 e. In which country sales was maximum and in which country sales was minimum
