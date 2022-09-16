@@ -41,7 +41,7 @@ e. In which country sales was maximum and in which country sales was minimum:
 f. Calculate quartelry sales for each city
 
 h. Find a month for each year in which maximum number of quantities were sold:
-  select month(a.month),a.year,b.sales as max_sales from(select month_id as month,year_id as year,
+  select a.month,a.year,b.sales as max_sales from(select month_id as month,year_id as year,
   sales from sales_order_data_orc) as a,
   (select year_id as year, max(sales) as sales from sales_order_data_orc
   group by year_id) as b
