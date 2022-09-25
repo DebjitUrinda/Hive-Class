@@ -4,8 +4,12 @@
 Scenario Based questions:
 
 Will the reducer work or not if you use “Limit 1” in any HiveQL query?
+-- There is not supposed to be any relation between reducer and limit keyword. 
+   Limit 'n' keyword is just used to reduce the display to only n number of rows irrespective of reducer or mapper.
 
 Suppose I have installed Apache Hive on top of my Hadoop cluster using default metastore configuration. Then, what will happen if we have multiple clients trying to access Hive at the same time? 
+-- By default hive uses Derby database, and in Derby database only one connection from client to hive is possible at a time. This is the drawback we have 
+   to face when multiple databases are trying to connect to hive at the same time.
 
 Suppose, I create a table that contains details of all the transactions done by the customers: CREATE TABLE transaction_details (cust_id INT, amount FLOAT, month STRING, country STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ‘,’ ;
 Now, after inserting 50,000 records in this table, I want to know the total revenue generated for each month. But, Hive is taking too much time in processing this query. How will you solve this problem and list the steps that I will be taking in order to do so?
