@@ -35,9 +35,10 @@ LOAD DATA LOCAL INPATH ‘Home/country/state/’
 OVERWRITE INTO TABLE address;
 
 The following statement failed to execute. What can be the cause?
+-- the statement is incorrrect, it should be : LOAD DATA LOCAL INPATH 'file:///Home/country/state/file_name.csv' OVERWRITE INTO TABLE address; 
 
 Is it possible to add 100 nodes when we already have 100 nodes in Hive? If yes, how?
-
+-- yes it is possible, cause we are adding the nodes horizontally which is termed as horizontal scaling, so we can add as many number of nodes as possible.
 
 
 
