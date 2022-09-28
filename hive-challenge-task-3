@@ -72,6 +72,24 @@ https://archive.ics.uci.edu/ml/machine-learning-databases/00360/
 1. Create a hive table as per given schema in your dataset 
 2. try to place a data into table location
 3. Perform a select operation . 
+-- hive> create table AirQuality(
+    > Date string,Time string,`CO(GT)` float,`PT08.S1(CO)` int,`NMHC(GT)`int,
+    > `C6H6(GT)` float,`PT08.S2(NMHC)` int,`NOx(GT)` int,`PT08.S3(NOx)` int,
+    > `NO2(GT)` int,`PT08.S4(NO2)` int,`PT08.S5(O3)` int,T float,RH float,AH float)
+    > row format delimited
+    > fields terminated by '\073'
+    > tblproperties("skip.header.line.count"="1");
+   OK
+   Time taken: 0.8 seconds
+   hive> load data local inpath 'file:///home/cloudera/Hive_Challenge3/AQ_head100.csv' into table AirQuality;
+   Loading data to table hive_challenge.airquality
+   Table hive_challenge.airquality stats: [numFiles=1, totalSize=8295]
+   OK
+   Time taken: 1.836 seconds
+   hive> select * from AirQuality;
+   FAILED: RuntimeException java.lang.RuntimeException: cannot find field pt08 from [0:date, 1:time, 2:co(gt), 3:pt08.s1(co), 4:nmhc(gt), 5:c6h6(gt),   6:pt08.s2(nmhc), 7:nox(gt), 8:pt08.s3(nox), 9:no2(gt), 10:pt08.s4(no2), 11:pt08.s5(o3), 12:t, 13:rh, 14:ah]
+   hive>
+
 4. Fetch the result of the select operation in your local as a csv file . 
 5. Perform group by operation . 
 7. Perform filter operation at least 5 kinds of filter examples . 
