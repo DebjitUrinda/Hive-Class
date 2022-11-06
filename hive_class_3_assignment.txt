@@ -79,7 +79,7 @@ b. Find a product for which maximum orders were placed:
   select PRODUCTLINE 
   from (select sum(QUANTITYORDERED) as total_ordered, productline 
   from sales_order_data_orc group by productline 
-  order by total_ordered desc) tb limit 1;
+  order by desc limit 1) tb;
   
 c. Calculate the total sales for each quarter:
   select sum(sales) as total_sales,QTR_ID as sales_quarter
