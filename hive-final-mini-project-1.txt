@@ -7,7 +7,19 @@ Download Dataset 2 - https://drive.google.com/file/d/1-JIPCZ34dyN6k9CqJa-Y8yxIGq
 Note: both files are csv files. 
 
 
-1. Create a schema based on the given dataset
+1. Create a schema based on the given dataset:
+  For agent Log report:
+  hive> create table agent_log
+    > (Sl_No int,
+    > Agent string,
+    > Date1 string,
+    > Login_Time string,
+    > Logout_Time string,
+    > Duration string)
+    > row format delimited
+    > fields terminated by '\t'
+    > tblproperties("skip.header.line.count"="1");
+    
 2. Dump the data inside the hdfs in the given schema location.
 3. List of all agents' names. 
 4. Find out agent average rating.
